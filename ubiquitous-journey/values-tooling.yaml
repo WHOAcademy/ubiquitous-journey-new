@@ -10,9 +10,7 @@ applications:
     source_path: charts/jenkins
     source_ref: "jenkins-1.0.7"
     values:
-      persistence:
-        accessModes: ReadWriteOnce
-        volumeSize: 20Gi
+      persistence: false
       source_secrets:
         - name: git-auth
           username: who-academy
