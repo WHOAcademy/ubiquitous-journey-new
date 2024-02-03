@@ -8,12 +8,12 @@ applications:
     enabled: true
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/jenkins
-    source_ref: "jenkins-1.0.7"
+    source_ref: "jenkins-1.0.10"
     values:
       appName: jenkins
       persistence:
         accessModes: ReadWriteOnce
-        volumeSize: 20Gi
+        volumeSize: 8Gi
       source_secrets:
         - name: git-auth
           username: who-academy
