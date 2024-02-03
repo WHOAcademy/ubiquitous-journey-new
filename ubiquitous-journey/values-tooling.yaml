@@ -13,7 +13,7 @@ applications:
       appName: jenkins
       persistence:
         accessModes: ReadWriteOnce
-        volumeSize: 8Gi
+        volumeSize: 20Gi
       source_secrets:
         - name: git-auth
           username: who-academy
