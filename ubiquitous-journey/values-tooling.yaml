@@ -1,54 +1,8 @@
-
-# gloabl vars
+# Global vars
 ci_cd_namespace: &ci_cd "labs-ci-cd"
-pm_namespace: &pm "labs-pm"
-ops_namespace: &ops "labs-cluster-ops"
-dev_namespace: &dev "labs-dev"
-test_namespace: &test "labs-test"
-staging_namespace: &stage "labs-staging"
 
 # App of applications list
 applications:
-  # Bootstrap Project
-  - name: bootstrap
-    enabled: true
-    source: https://redhat-cop.github.io/helm-charts
-    chart_name: bootstrap-project
-    source_ref: "1.0.1"
-    values:
-      bindings: &binds # this labs-devs is the GROUP NAME in IDM
-        - name: labs-devs
-          kind: Group
-          role: edit
-        # this labs-admins is the GROUP NAME in IDM
-        - name: labs-admins
-          kind: Group
-          role: admin
-        - name: jenkins
-          kind: ServiceAccount
-          role: admin
-          namespace: *ci_cd
-      namespaces:
-        - name: *ci_cd
-          bindings: *binds
-          operatorgroup: false
-        - name: *dev
-          bindings: *binds
-          operatorgroup: true
-        - name: *test
-          bindings: *binds
-          operatorgroup: true
-        - name: *stage
-          bindings: *binds
-          operatorgroup: true
-        # optional extra namespaces for cluster ops and PM tools
-        - name: *pm
-          bindings: *binds
-          operatorgroup: false
-        - name: *ops
-          bindings: *binds
-          operatorgroup: false
-
   # Jenkins
   - name: jenkins
     enabled: true
@@ -56,8 +10,13 @@ applications:
     source_path: charts/jenkins
     source_ref: "jenkins-1.0.7"
     values:
-      persistence: false
+      persistence:
+        accessModes: ReadWriteOnce
+        volumeSize: 20Gi
       source_secrets:
+        - name: git-auth
+          username: who-academy
+          password: 871ab110e72e4422dc2f14bd2d298357990c0052
         - name: nexus-password
           username: admin
           password: admin123
@@ -84,7 +43,7 @@ applications:
       fullnameOverride: sealed-secrets
       # namespace must exist, so we use labs-ci-cd by default.
       namespace: *ci_cd
-      # Dont touch the security context values, deployment will fail in OpenShift otherwise.
+      # Don't touch the security context values, deployment will fail in OpenShift otherwise.
       podSecurityContext:
         fsGroup:
       containerSecurityContext:
@@ -132,7 +91,7 @@ applications:
 
   # CodeReady Workspaces
   - name: crw
-    enabled: true
+    enabled: false
     destination: crw
     source: https://github.com/rht-labs/refactored-adventure
     source_path: crw/base
@@ -142,7 +101,7 @@ applications:
 
   # Zalenium
   - name: zalenium
-    enabled: true
+    enabled: false
     source: https://github.com/zalando/zalenium.git
     source_path: charts/zalenium
     source_ref: "master"
@@ -167,7 +126,7 @@ applications:
 
   # Pact-broker
   - name: pact-broker
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     source_ref: "0.0.8"
     values:
@@ -175,7 +134,7 @@ applications:
  
    # Hoverfly
   - name: hoverfly
-    enabled: true
+    enabled: false
     source: https://github.com/helm/charts.git
     source_path: incubator/hoverfly
     source_ref: "master"
