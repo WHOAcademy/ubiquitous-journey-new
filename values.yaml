@@ -1,5 +1,5 @@
 # Tell ArgoCD where to find the ubiquitous-journey project
-source: https://github.com/rht-labs/ubiquitous-journey.git
+source: https://github.com/WHOAcademy/ubiquitous-journey-new.git
 team: labs
 release: ci-cd
 
@@ -13,7 +13,7 @@ applications:
 
   # Test app of app
   - name: test-app-of-pb
-    enabled: true
+    enabled: false
     source_path: "."
     helm_values:
       - pet-battle/test/values.yaml
