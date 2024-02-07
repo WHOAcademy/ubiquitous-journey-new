@@ -17,7 +17,7 @@ applications:
       source_secrets:
         - name: git-auth
           username: who-academy
-          password: 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
+          password: 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
         - name: nexus-password
           username: admin
           password: admin123
