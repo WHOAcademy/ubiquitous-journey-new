@@ -14,6 +14,7 @@ applications:
       persistence:
         accessModes: ReadWriteOnce
         volumeSize: 20Gi
+      source_secrets: {}
       sealed_secrets:
         - name: git-auth
           username: AgAdOepZ6kCDQDzVAgncXi+WvbaHksLzldaR2Upu3GkC3f4W/6cBPLy0zWtVB89JgEnA1cYszbSzO3/fQCSNlSjrC0VP00q7E6EY5QYYqb1vkaoRcdeF/O0qVZtQRIcCT7TtIBDLn3h5CBBz30V0D8lqDme5kGk/IrQbyUEvVOE6gz+TadGS7rMExGWUdj4h4PldOT6yfXi/CYegLsGNn59VinEqP4lIrN9ObnByNII3R/q4DtN9uUu5PApEo4z/A85pirQFCjQBmxCli+DTsfnUSuX8OrgYcg6b5vGqnUH4FwyrQiqXeTIpRsQsmDYtsVy4AIoYUORrfVRiREole68v9pkRRTBiWOy6BS3ZsJ3Yy5XXS7mFwfPTzEBuLc09eWQxLoJrFokccQUTNb+dnFTx/qadd5LvpOLRkm1IVV7wDUvy5WAxzwEsOhRWeZRmB/cu3PKDyuBks8IhHRcGEN24UowOqCo2k3Cw3zEdWRgfd3F9SHl/rsv4l20QmwVAGRexIPwjafWRvK1UiiaDBcBr0eoDxlDho1twGHnCr3JdaiRQwbK85h9zRG3g0WiqM9P89s6mKit60k/s5M5tJG9r4oeeoP7fIUQ8yFbtA7aDxHdM0YD6SxzyJhZdK2fn3LBHDhAiZ8Egkp5A14ODZd7E+dHQtpD6w1zKarLTx8KwmU9hm8sm6QFOPet3wMF3ysVVqqRCjVgwvwDFs/Z9kao=
