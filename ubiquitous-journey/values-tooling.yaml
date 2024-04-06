@@ -5,7 +5,7 @@ ci_cd_namespace: &ci_cd "labs-ci-cd"
 applications:
   # Jenkins
   - name: jenkins
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/jenkins
     source_ref: "jenkins-1.0.10"
@@ -31,7 +31,7 @@ applications:
     source_ref: "1.1.11"
     values:
       persistence:
-        storageSize: 8Gi
+        storageSize: 32Gi
       service:
         name: nexus
 
@@ -78,7 +78,7 @@ applications:
   
   # Sonarqube
   - name: sonarqube
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonarqube
     source_ref: "0.1.0"
